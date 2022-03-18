@@ -1,0 +1,11 @@
+{
+    "properties": {
+        "SsmKey": {
+            "description": "The key to get the Function ARN from",
+            "type": "string"
+        }
+    },
+    "additionalProperties": false,
+    "definitions": {},
+    "typeName": "DemoOrg::CloudFront::BehaviorHook"
+}

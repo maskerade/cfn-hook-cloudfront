@@ -1,0 +1,180 @@
+{
+  "hookTypeName": "DemoOrg::CloudFront::BehaviorHook",
+  "actionInvocationPoint": "CREATE_PRE_PROVISION",
+  "requestData": {
+    "targetName": "AWS::CloudFront::Distribution",
+    "targetType": "AWS::S3::Bucket",
+    "targetLogicalId": "cce92b39-8524-42c0-aff6-bc45cf0666f6",
+    "targetModel": {
+      "resourceProperties": {
+        "DistributionConfig": {
+          "Aliases": [
+            "edgepoc2.dev.someonedrive.me",
+            "jonnycabs.dev.someonedrive.me"
+          ],
+          "CacheBehaviors": [
+            {
+              "AllowedMethods": [
+                "GET",
+                "HEAD",
+                "OPTIONS",
+                "PUT",
+                "PATCH",
+                "POST",
+                "DELETE"
+              ],
+              "CachePolicyId": "4135ea2d-6df8-44a3-9df3-4b5a84be39ad",
+              "Compress": true,
+              "LambdaFunctionAssociations": [
+                {
+                  "EventType": "viewer-request",
+                  "LambdaFunctionARN": {
+                    "Ref": "DistilBotProtectionMockFnDistilBotProtectionMockFnCurrentVersion89995C32715293709537b9d08f06507907f8d336"
+                  }
+                },
+                {
+                  "EventType": "origin-request",
+                  "LambdaFunctionARN": {
+                    "Ref": "SearchOriginRequestFnCurrentVersion310B00F75e44d298ea6447c8f621200dc50cb4cc"
+                  }
+                }
+              ],
+              "OriginRequestPolicyId": {
+                "Ref": "searchOrchestratorOriginRequestPolicy663F1F9F"
+              },
+              "PathPattern": "/search",
+              "TargetOriginId": "TaxiCfStackTaxiDistroOrigin287495A14",
+              "ViewerProtocolPolicy": "redirect-to-https"
+            },
+            {
+              "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+              "Compress": true,
+              "LambdaFunctionAssociations": [
+                {
+                  "EventType": "viewer-request",
+                  "LambdaFunctionARN": {
+                    "Ref": "DistilBotProtectionMockFnDistilBotProtectionMockFnCurrentVersion89995C32715293709537b9d08f06507907f8d336"
+                  }
+                },
+                {
+                  "EventType": "origin-request",
+                  "LambdaFunctionARN": {
+                    "Ref": "InsightsFnTaxiInsightsLambdaFnCurrentVersion275DF604b1a72c6e55f58c7dfc5ea7307de733a6"
+                  }
+                },
+                {
+                  "EventType": "viewer-response",
+                  "LambdaFunctionARN": {
+                    "Ref": "EdgeLambdaViewerResponseFnCurrentVersionA677D9F9f228e1b5d26e87f65ae3ed6907e4238e"
+                  }
+                }
+              ],
+              "OriginRequestPolicyId": {
+                "Ref": "landingPageLondonGatwickOriginRequestPolicyADA0EAC5"
+              },
+              "PathPattern": "/en-gb/airport/transfers/uk/london/lgw",
+              "TargetOriginId": "TaxiCfStackTaxiDistroOrigin3298C87C0",
+              "ViewerProtocolPolicy": "redirect-to-https"
+            }
+          ],
+          "DefaultCacheBehavior": {
+            "AllowedMethods": [
+              "GET",
+              "HEAD",
+              "OPTIONS",
+              "PUT",
+              "PATCH",
+              "POST",
+              "DELETE"
+            ],
+            "CachePolicyId": "4135ea2d-6df8-44a3-9df3-4b5a84be39ad",
+            "Compress": true,
+            "LambdaFunctionAssociations": [
+              {
+                "EventType": "viewer-request",
+                "LambdaFunctionARN": {
+                  "Ref": "DistilBotProtectionMockFnDistilBotProtectionMockFnCurrentVersion89995C32715293709537b9d08f06507907f8d336"
+                }
+              },
+              {
+                "EventType": "origin-request",
+                "IncludeBody": true,
+                "LambdaFunctionARN": {
+                  "Ref": "InsightsFnTestTaxiInsightsLambdaFnCurrentVersion6E3CC02F209ce7fd2d52e50733457eb6fc84e530"
+                }
+              }
+            ],
+            "OriginRequestPolicyId": {
+              "Ref": "TaxiDistroOriginPolicyAC339D81"
+            },
+            "ResponseHeadersPolicyId": {
+              "Ref": "TaxiResponseHeadersCustom"
+            },
+            "TargetOriginId": "TaxiCfStackTaxiDistroOrigin10A5CCAE3",
+            "ViewerProtocolPolicy": "redirect-to-https"
+          },
+          "Enabled": true,
+          "HttpVersion": "http2",
+          "IPV6Enabled": true,
+          "Origins": [
+            {
+              "CustomOriginConfig": {
+                "OriginProtocolPolicy": "https-only",
+                "OriginSSLProtocols": [
+                  "TLSv1.2"
+                ]
+              },
+              "DomainName": "appelbecsgrandcentral-13360703.us-west-2.elb.amazonaws.com",
+              "Id": "TaxiCfStackTaxiDistroOrigin10A5CCAE3",
+              "OriginCustomHeaders": [
+                {
+                  "HeaderName": "x-cloudfront-token",
+                  "HeaderValue": "f920c147-b170-46c8-b07a-fe6810bf4f2c"
+                }
+              ]
+            },
+            {
+              "CustomOriginConfig": {
+                "OriginProtocolPolicy": "https-only",
+                "OriginSSLProtocols": [
+                  "TLSv1.2"
+                ]
+              },
+              "DomainName": "appelbecsgrandcentral-13360703.us-west-2.elb.amazonaws.com",
+              "Id": "TaxiCfStackTaxiDistroOrigin287495A14",
+              "OriginCustomHeaders": [
+                {
+                  "HeaderName": "x-cloudfront-token",
+                  "HeaderValue": "f920c147-b170-46c8-b07a-fe6810bf4f2c"
+                }
+              ]
+            },
+            {
+              "CustomOriginConfig": {
+                "OriginProtocolPolicy": "https-only",
+                "OriginSSLProtocols": [
+                  "TLSv1.2"
+                ]
+              },
+              "DomainName": "appelbecsgrandcentral-13360703.us-west-2.elb.amazonaws.com",
+              "Id": "TaxiCfStackTaxiDistroOrigin3298C87C0",
+              "OriginCustomHeaders": [
+                {
+                  "HeaderName": "x-cloudfront-token",
+                  "HeaderValue": "f920c147-b170-46c8-b07a-fe6810bf4f2c"
+                }
+              ]
+            }
+          ],
+          "ViewerCertificate": {
+            "AcmCertificateArn": "arn:aws:acm:us-east-1:339895967185:certificate/8303f518-155a-49eb-96ce-db878c268aee",
+            "MinimumProtocolVersion": "TLSv1.2_2021",
+            "SslSupportMethod": "sni-only"
+          }
+        }
+      }
+    }
+  },
+  "awsAccountId": "562973451706",
+  "clientRequestToken": "cce92b39-8524-42c0-aff6-bc45cf0666f6"
+}

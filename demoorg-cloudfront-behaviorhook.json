@@ -1,0 +1,27 @@
+{
+    "typeName": "DemoOrg::CloudFront::BehaviorHook",
+    "description": "Example Cloudfront Behaviors Edge Lambda verification hook",
+    "sourceUrl": "https://github.com/aws-cloudformation/example-sse-hook",
+    "documentationUrl": "https://github.com/aws-cloudformation/example-sse-hook/blob/master/README.md",
+    "typeConfiguration": {
+        "properties": {
+            "SsmKey": {
+                "description": "The key to get the Function ARN from",
+                "type": "string"
+            }
+        },
+        "additionalProperties": false
+    },
+    "required": [
+        "SsmKey"
+    ],
+    "handlers": {
+        "preCreate": {
+            "targetNames": [
+                "AWS::CloudFront::Distribution"
+            ],
+            "permissions": ["ssm:GetParameter"]
+        }
+    },
+    "additionalProperties": false
+}

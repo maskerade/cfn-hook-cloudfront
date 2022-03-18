@@ -1,0 +1,74 @@
+{
+  "AWS::CloudFront::Distribution": {
+    "resourceProperties": {
+      "DistributionConfig": {
+        "CacheBehaviors": [
+          {
+            "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+            "Compress": true,
+            "LambdaFunctionAssociations": [
+              {
+                "EventType": "viewer-request",
+                "LambdaFunctionARN": "INVALID_ARN"
+              },
+              {
+                "EventType": "viewer-response",
+                "LambdaFunctionARN": {
+                  "Ref": "SsmParameterValueMyParameterC96584B6F00A464EAD1953AFF4B05118Parameter"
+                }
+              }
+            ],
+            "PathPattern": "testpath",
+            "TargetOriginId": "CdkCloudfrontHookStackdistroOrigin173B4382B",
+            "ViewerProtocolPolicy": "allow-all"
+          }
+        ],
+        "DefaultCacheBehavior": {
+          "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+          "Compress": true,
+          "LambdaFunctionAssociations": [
+            {
+              "EventType": "viewer-request",
+              "LambdaFunctionARN": "arn:aws:lambda:us-east-1:123456789012:function:functionName:1"
+            },
+            {
+              "EventType": "viewer-response",
+              "LambdaFunctionARN": {
+                "Ref": "SsmParameterValueMyParameterC96584B6F00A464EAD1953AFF4B05118Parameter"
+              }
+            }
+          ],
+          "TargetOriginId": "CdkCloudfrontHookStackdistroOrigin173B4382B",
+          "ViewerProtocolPolicy": "allow-all"
+        },
+        "Enabled": true,
+        "HttpVersion": "http2",
+        "IPV6Enabled": true,
+        "Origins": [
+          {
+            "DomainName": {
+              "Fn::GetAtt": [
+                "myBucket5AF9C99B",
+                "RegionalDomainName"
+              ]
+            },
+            "Id": "CdkCloudfrontHookStackdistroOrigin173B4382B",
+            "S3OriginConfig": {
+              "OriginAccessIdentity": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "origin-access-identity/cloudfront/",
+                    {
+                      "Ref": "distroOrigin1S3OriginA9022668"
+                    }
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
