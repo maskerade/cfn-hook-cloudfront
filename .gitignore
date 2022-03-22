@@ -131,3 +131,4 @@ rpdk.log*
 
 build
 .penv
+.idea
